@@ -81,18 +81,24 @@ footer p {
 .clean-menu {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    max-width: 600px; /* Limite la largeur totale pour garder un aspect centré */
     margin: 30px auto;
+    gap: 20px; /* FORCE l'espace entre les mots peu importe la langue */
 }
 
 .clean-menu a {
-    font-family: Arial, sans-serif; /* Même typo que la phrase */
+    font-family: Arial, sans-serif;
     text-decoration: none;
-    flex: 1;
     text-align: center;
     white-space: nowrap;
     font-size: 1em;
     transition: color 0.5s ease, opacity 0.3s ease;
+    
+    /* On utilise flex-grow pour répartir l'espace équitablement */
+    flex: 1; 
+    min-width: 80px; /* Empêche les mots de se compresser trop en FR/EN */
 }
 
 /* Couleur violette au début */
@@ -132,9 +138,14 @@ footer p {
 
 /* --- MOBILE --- */
 @media (max-width: 600px) {
+    .clean-menu {
+        gap: 10px; /* Espace un peu plus réduit sur mobile pour que ça tienne */
+    }
     .clean-menu a {
-        font-size: 0.7em; /* Force l'affichage sur une ligne */
+        font-size: 0.7em;
+        min-width: auto; /* Relâche la contrainte sur mobile */
     }
 }
+
 
 
