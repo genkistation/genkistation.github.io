@@ -80,12 +80,12 @@ footer p {
 /* --- MENU --- */
 .clean-menu {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centre le bloc entier */
     align-items: center;
     width: 100%;
-    max-width: 600px; /* Limite la largeur totale pour garder un aspect centré */
     margin: 30px auto;
-    gap: 20px; /* FORCE l'espace entre les mots peu importe la langue */
+    /* On retire le gap pour gérer l'espace par la largeur des liens */
+    gap: 0; 
 }
 
 .clean-menu a {
@@ -95,10 +95,11 @@ footer p {
     white-space: nowrap;
     font-size: 1em;
     transition: color 0.5s ease, opacity 0.3s ease;
-    
-    /* On utilise flex-grow pour répartir l'espace équitablement */
-    flex: 1; 
-    min-width: 80px; /* Empêche les mots de se compresser trop en FR/EN */
+
+    /* LA CLÉ DE L'ESPACEMENT RÉGULIER : */
+    /* On donne la même largeur fixe à chaque conteneur de mot */
+    width: 140px; 
+    display: inline-block;
 }
 
 /* Couleur violette au début */
@@ -111,8 +112,6 @@ footer p {
 .clean-menu a.loaded {
     color: #ffffff;
     opacity: 0.7;
-    letter-spacing: normal; /* On s'assure que rien ne bouge */
-    cursor: pointer;
 }
 
 .clean-menu a.loaded:hover {
@@ -139,13 +138,15 @@ footer p {
 /* --- MOBILE --- */
 @media (max-width: 600px) {
     .clean-menu {
-        gap: 10px; /* Espace un peu plus réduit sur mobile pour que ça tienne */
+        /* On permet au menu de déborder légèrement ou de réduire l'écart */
+        justify-content: space-around; 
     }
     .clean-menu a {
-        font-size: 0.7em;
-        min-width: auto; /* Relâche la contrainte sur mobile */
+        font-size: 0.65em; /* Taille réduite pour mobile */
+        width: 22%; /* On utilise des pourcentages pour que ça tienne sur une ligne */
     }
 }
+
 
 
 
