@@ -63,11 +63,8 @@ footer p {
     color: #bbbbbb;
 }
 
-/* --- NOUVEAUX STYLES EPURÉS --- */
-
-/* 1. Animation Logo 3D (Toujours là, inchangée) */
+/* --- LOGO 3D --- */
 .logo {
-    transition: transform 0.5s;
     animation: retroSpin 12s infinite linear;
     will-change: transform;
 }
@@ -78,86 +75,56 @@ footer p {
     100% { transform: perspective(1000px) rotateY(360deg); }
 }
 
-/* 2. Menu Minimaliste */
+/* --- MENU --- */
 .clean-menu {
     display: flex;
-    justify-content: center; /* Centré horizontalement */
+    justify-content: center;
     width: 100%;
-    max-width: 800px; /* Largeur max pour pas que ce soit trop écarté sur grand écran */
-    margin: 30px auto; /* Centré */
-    padding: 0 10px; /* Marge de sécurité sur mobile */
-    box-sizing: border-box;
+    margin: 30px auto;
 }
 
 .clean-menu a {
-    /* TYPO : Même que "L'univers est connecté" (hérité du body/p) */
-    font-family: Arial, sans-serif; 
+    font-family: Arial, sans-serif; /* Même typo que la phrase */
     text-decoration: none;
-    font-weight: normal;
+    flex: 1;
     text-align: center;
-    
-    /* GESTION DE L'ESPACE */
-    flex: 1; /* Chaque mot prend la même place disponible */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    
-    /* TRANSITIONS */
-    transition: letter-spacing 0.3s ease, opacity 0.3s ease, color 0.5s ease;
-    
-    /* TAILLE DU TEXTE */
-    font-size: 1em; /* Taille standard */
+    white-space: nowrap;
+    font-size: 1em;
+    transition: color 0.5s ease, opacity 0.3s ease;
 }
 
-/* Version Mobile : On réduit la police pour que tout tienne sur une ligne */
-@media (max-width: 600px) {
-    .clean-menu a {
-        font-size: 0.75em; /* Plus petit sur mobile */
-    }
-}
-
-/* ÉTAT INITIAL (Chargement) */
+/* Couleur violette au début */
 .clean-menu a.init-design {
-    color: #a29bfe; /* VIOLET (teinte pastel rétro) */
-    pointer-events: none; /* Non cliquable pendant les 3 secondes */
-    cursor: default;
+    color: #a29bfe; 
+    pointer-events: none;
 }
 
-/* ÉTAT FINAL (Après 3s) */
+/* Couleur finale blanche, opacité fixe (pas d'effet au survol) */
 .clean-menu a.loaded {
-    color: #ffffff; /* Blanc */
-    opacity: 0.7; /* Légèrement transparent comme "contact" */
+    color: #ffffff;
+    opacity: 0.7;
 }
 
-/* SURVOL (Uniquement quand c'est chargé) */
-.clean-menu a.loaded:hover {
-    opacity: 1;
-    letter-spacing: 2px; /* L'effet d'expansion */
-}
-
-/* Lien GAME inactif */
 .clean-menu a.no-click {
     cursor: default;
 }
 
-
-/* 3. Lien Contact */
+/* --- CONTACT --- */
 .contact-zone {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .contact-zone a {
-    /* TYPO : Même que le copyright */
-    font-family: Arial, sans-serif;
-    font-size: 0.8em; /* Petite taille comme le copyright */
+    font-family: Arial, sans-serif; /* Même typo que le copyright */
+    font-size: 0.8em;
     color: #ffffff;
     text-decoration: none;
     opacity: 0.7;
-    transition: all 0.3s ease;
 }
 
-.contact-zone a:hover {
-    opacity: 1;
-    letter-spacing: 2px;
+/* --- MOBILE --- */
+@media (max-width: 600px) {
+    .clean-menu a {
+        font-size: 0.7em; /* Force l'affichage sur une ligne */
+    }
 }
