@@ -63,63 +63,84 @@ footer p {
     color: #bbbbbb;
 }
 
-/* --- NOUVEAUX STYLES --- */
+/* --- NOUVEAUX STYLES EPURÉS --- */
 
-/* 1. Animation Logo 3D Rétro */
+/* 1. Animation Logo 3D (Toujours là, inchangée) */
 .logo {
-    /* Perspective pour donner l'effet de profondeur */
     transition: transform 0.5s;
     animation: retroSpin 12s infinite linear;
-    /* On force le GPU pour la fluidité */
     will-change: transform;
 }
 
 @keyframes retroSpin {
-    0% { 
-        transform: perspective(1000px) rotateY(0deg); 
-    }
-    50% {
-        /* À mi-chemin, on voit "l'épaisseur" grâce aux ombres qui se décalent */
-        filter: drop-shadow(4px 0px 0px #555) drop-shadow(8px 0px 0px #333);
-    }
-    100% { 
-        transform: perspective(1000px) rotateY(360deg); 
-    }
+    0% { transform: perspective(1000px) rotateY(0deg); }
+    50% { filter: drop-shadow(4px 0px 0px #555) drop-shadow(8px 0px 0px #333); }
+    100% { transform: perspective(1000px) rotateY(360deg); }
 }
 
-/* 2. Menu Cyberpunk Minimaliste */
-.cyber-menu {
+/* 2. Menu Minimaliste */
+.clean-menu {
+    display: flex;
+    justify-content: center; /* Centré horizontalement */
+    width: 100%;
+    max-width: 800px; /* Largeur max pour pas que ce soit trop écarté sur grand écran */
+    margin: 30px auto; /* Centré */
+    padding: 0 10px; /* Marge de sécurité sur mobile */
+    box-sizing: border-box;
+}
+
+.clean-menu a {
+    /* TYPO : Même que "L'univers est connecté" (hérité du body/p) */
+    font-family: Arial, sans-serif; 
+    text-decoration: none;
+    font-weight: normal;
+    text-align: center;
+    
+    /* GESTION DE L'ESPACE */
+    flex: 1; /* Chaque mot prend la même place disponible */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* Espace entre les liens */
-    margin-top: 40px;
-    flex-wrap: wrap;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    
+    /* TRANSITIONS */
+    transition: letter-spacing 0.3s ease, opacity 0.3s ease, color 0.5s ease;
+    
+    /* TAILLE DU TEXTE */
+    font-size: 1em; /* Taille standard */
 }
 
-.cyber-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace; /* Police mono pour l'effet code */
-    font-size: 1.1em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: relative;
-    padding: 5px 10px;
-    transition: color 0.3s;
+/* Version Mobile : On réduit la police pour que tout tienne sur une ligne */
+@media (max-width: 600px) {
+    .clean-menu a {
+        font-size: 0.75em; /* Plus petit sur mobile */
+    }
 }
 
-/* Style spécifique pour GAME (non cliquable) */
-.cyber-menu a.no-click {
+/* ÉTAT INITIAL (Chargement) */
+.clean-menu a.init-design {
+    color: #a29bfe; /* VIOLET (teinte pastel rétro) */
+    pointer-events: none; /* Non cliquable pendant les 3 secondes */
     cursor: default;
-    opacity: 0.7;
 }
 
-.cyber-menu a:hover {
-    color: #00ffcc; /* Une petite touche néon au survol */
-    text-shadow: 0 0 8px #00ffcc;
+/* ÉTAT FINAL (Après 3s) */
+.clean-menu a.loaded {
+    color: #ffffff; /* Blanc */
+    opacity: 0.7; /* Légèrement transparent comme "contact" */
 }
+
+/* SURVOL (Uniquement quand c'est chargé) */
+.clean-menu a.loaded:hover {
+    opacity: 1;
+    letter-spacing: 2px; /* L'effet d'expansion */
+}
+
+/* Lien GAME inactif */
+.clean-menu a.no-click {
+    cursor: default;
+}
+
 
 /* 3. Lien Contact */
 .contact-zone {
@@ -127,15 +148,16 @@ footer p {
 }
 
 .contact-zone a {
-    color: #aaa;
+    /* TYPO : Même que le copyright */
+    font-family: Arial, sans-serif;
+    font-size: 0.8em; /* Petite taille comme le copyright */
+    color: #ffffff;
     text-decoration: none;
-    font-size: 0.9em;
-    text-transform: lowercase;
-    letter-spacing: 1px;
+    opacity: 0.7;
     transition: all 0.3s ease;
 }
 
 .contact-zone a:hover {
-    color: #fff;
-    letter-spacing: 2px; /* Petit effet d'expansion au survol */
+    opacity: 1;
+    letter-spacing: 2px;
 }
