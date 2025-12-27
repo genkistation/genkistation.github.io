@@ -63,38 +63,18 @@ footer p {
     color: #bbbbbb;
 }
 
-/* --- LOGO 3D FACIAL UNIQUEMENT --- */
+/* --- NOUVEAUX STYLES EPURÉS --- */
+/* 1. Animation Logo 3D (Toujours là, inchangée) */
 .logo {
-    /* On garde la transition et on lance la nouvelle animation */
-    animation: facialSpin 6s infinite ease-in-out;
+    transition: transform 0.5s;
+    animation: retroSpin 12s infinite linear;
     will-change: transform;
-    transform-style: preserve-3d;
 }
 
-@keyframes facialSpin {
-    0% {
-        transform: perspective(1000px) rotateY(0deg);
-        filter: drop-shadow(0px 0px 0px #555);
-    }
-    25% {
-        /* On penche vers la droite, l'ombre crée l'épaisseur à gauche */
-        transform: perspective(1000px) rotateY(45deg);
-        filter: drop-shadow(-4px 0px 2px #444);
-    }
-    50% {
-        /* Profil complet : le logo semble disparaître un instant */
-        transform: perspective(1000px) rotateY(90deg);
-        filter: drop-shadow(0px 0px 0px #333);
-    }
-    75% {
-        /* On revient vers la face mais en tournant de l'autre côté */
-        transform: perspective(1000px) rotateY(45deg);
-        filter: drop-shadow(-4px 0px 2px #444);
-    }
-    100% {
-        transform: perspective(1000px) rotateY(0deg);
-        filter: drop-shadow(0px 0px 0px #555);
-    }
+@keyframes retroSpin {
+    0% { transform: perspective(1000px) rotateY(0deg); }
+    50% { filter: drop-shadow(4px 0px 0px #555) drop-shadow(8px 0px 0px #333); }
+    100% { transform: perspective(1000px) rotateY(360deg); }
 }
 
 /* --- MENU --- */
@@ -156,4 +136,5 @@ footer p {
         font-size: 0.7em; /* Force l'affichage sur une ligne */
     }
 }
+
 
