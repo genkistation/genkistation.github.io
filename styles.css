@@ -65,6 +65,11 @@ footer p {
 
 /* --- NOUVEAUX STYLES EPURÉS --- */
 /* --- GESTION DES PHRASES (CARROUSEL) --- */
+/* --- CORRECTION CENTRAGE OPTIQUE JAPONAIS --- */
+.changing-phrase:first-child {
+    /* On décale très légèrement vers la droite pour compenser le vide du point final */
+    padding-left: 0.5em; 
+}
 .phrase-container {
     position: relative;
     height: 1.5em; /* Réserve l'espace pour éviter que le menu saute */
@@ -195,6 +200,7 @@ footer p {
         width: 22%; /* On utilise des pourcentages pour que ça tienne sur une ligne */
     }
 }
+
 
 
 
