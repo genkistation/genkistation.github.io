@@ -62,3 +62,80 @@ footer p {
     font-size: 0.8em;
     color: #bbbbbb;
 }
+
+/* --- NOUVEAUX STYLES --- */
+
+/* 1. Animation Logo 3D Rétro */
+.logo {
+    /* Perspective pour donner l'effet de profondeur */
+    transition: transform 0.5s;
+    animation: retroSpin 12s infinite linear;
+    /* On force le GPU pour la fluidité */
+    will-change: transform;
+}
+
+@keyframes retroSpin {
+    0% { 
+        transform: perspective(1000px) rotateY(0deg); 
+    }
+    50% {
+        /* À mi-chemin, on voit "l'épaisseur" grâce aux ombres qui se décalent */
+        filter: drop-shadow(4px 0px 0px #555) drop-shadow(8px 0px 0px #333);
+    }
+    100% { 
+        transform: perspective(1000px) rotateY(360deg); 
+    }
+}
+
+/* 2. Menu Cyberpunk Minimaliste */
+.cyber-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espace entre les liens */
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.cyber-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace; /* Police mono pour l'effet code */
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+/* Style spécifique pour GAME (non cliquable) */
+.cyber-menu a.no-click {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.cyber-menu a:hover {
+    color: #00ffcc; /* Une petite touche néon au survol */
+    text-shadow: 0 0 8px #00ffcc;
+}
+
+/* 3. Lien Contact */
+.contact-zone {
+    margin-bottom: 15px;
+}
+
+.contact-zone a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.contact-zone a:hover {
+    color: #fff;
+    letter-spacing: 2px; /* Petit effet d'expansion au survol */
+}
