@@ -63,16 +63,38 @@ footer p {
     color: #bbbbbb;
 }
 
-/* --- LOGO 3D --- */
+/* --- LOGO 3D FACIAL UNIQUEMENT --- */
 .logo {
-    animation: retroSpin 12s infinite linear;
+    /* On garde la transition et on lance la nouvelle animation */
+    animation: facialSpin 6s infinite ease-in-out;
     will-change: transform;
+    transform-style: preserve-3d;
 }
 
-@keyframes retroSpin {
-    0% { transform: perspective(1000px) rotateY(0deg); }
-    50% { filter: drop-shadow(4px 0px 0px #555) drop-shadow(8px 0px 0px #333); }
-    100% { transform: perspective(1000px) rotateY(360deg); }
+@keyframes facialSpin {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+        filter: drop-shadow(0px 0px 0px #555);
+    }
+    25% {
+        /* On penche vers la droite, l'ombre crée l'épaisseur à gauche */
+        transform: perspective(1000px) rotateY(45deg);
+        filter: drop-shadow(-4px 0px 2px #444);
+    }
+    50% {
+        /* Profil complet : le logo semble disparaître un instant */
+        transform: perspective(1000px) rotateY(90deg);
+        filter: drop-shadow(0px 0px 0px #333);
+    }
+    75% {
+        /* On revient vers la face mais en tournant de l'autre côté */
+        transform: perspective(1000px) rotateY(45deg);
+        filter: drop-shadow(-4px 0px 2px #444);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(0deg);
+        filter: drop-shadow(0px 0px 0px #555);
+    }
 }
 
 /* --- MENU --- */
@@ -103,6 +125,12 @@ footer p {
 .clean-menu a.loaded {
     color: #ffffff;
     opacity: 0.7;
+    letter-spacing: normal; /* On s'assure que rien ne bouge */
+    cursor: pointer;
+}
+
+.clean-menu a.loaded:hover {
+    opacity: 1; /* Juste un léger gain de luminosité, sans mouvement */
 }
 
 .clean-menu a.no-click {
@@ -128,3 +156,4 @@ footer p {
         font-size: 0.7em; /* Force l'affichage sur une ligne */
     }
 }
+
