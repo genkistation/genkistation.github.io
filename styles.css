@@ -64,6 +64,27 @@ footer p {
 }
 
 /* --- NOUVEAUX STYLES EPURÉS --- */
+/* --- GESTION DES PHRASES (CARROUSEL) --- */
+.phrase-container {
+    position: relative;
+    height: 1.5em; /* Réserve l'espace pour éviter que le menu saute */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.changing-phrase {
+    position: absolute;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transition douce */
+    font-size: 1.2em;
+}
+
+.changing-phrase.active {
+    opacity: 1;
+}
 /* --- LOGO 3D AVEC OMBRE GRÉSILLANTE --- */
 .logo {
     transition: transform 0.5s;
@@ -174,6 +195,7 @@ footer p {
         width: 22%; /* On utilise des pourcentages pour que ça tienne sur une ligne */
     }
 }
+
 
 
 
