@@ -122,6 +122,12 @@ footer p {
     cursor: default;
 }
 
+/* ÉTAT SANS LIEN (PLUS FONCÉ) */
+.clean-menu a.no-click.loaded {
+    opacity: 0.25; /* Rendu beaucoup plus sombre/grisâtre */
+    cursor: default;
+}
+
 /* --- CONTACT --- */
 .contact-zone {
     margin-bottom: 10px;
@@ -146,6 +152,7 @@ footer p {
         width: 22%; /* On utilise des pourcentages pour que ça tienne sur une ligne */
     }
 }
+
 
 
 
