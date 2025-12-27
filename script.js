@@ -12,18 +12,18 @@ document.getElementById('languageSelect').dispatchEvent(new Event('change'));
 /* --- GESTION DU MENU (3 SECONDES) --- */
 
 window.addEventListener('load', () => {
-    // On attend 3000 ms (3 secondes)
     setTimeout(() => {
         const links = document.querySelectorAll('.clean-menu a');
-        
         links.forEach(link => {
-            // 1. On remplace "DESIGN" par le vrai mot (stocké dans data-real)
             link.innerText = link.dataset.real;
-            
-            // 2. On change les classes pour activer la couleur blanche et le hover
             link.classList.remove('init-design');
             link.classList.add('loaded');
+            
+            // On réactive le clic uniquement pour les liens valides
+            if (!link.classList.contains('no-click')) {
+                link.style.pointerEvents = "auto";
+            }
         });
-        
     }, 3000);
 });
+
